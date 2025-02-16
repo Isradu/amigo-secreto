@@ -2,34 +2,31 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Pequeño Juego de Amigos</title>
+  <title>Amigo secreto</title>
   <!-- Vinculamos el archivo CSS -->
   <link rel="stylesheet" href="prueba.css" />
 </head>
 <body>
-  <!-- Sección principal de "Features" y "Games" -->
+  <!-- Sección principal de "Titulo" y "Reglas" -->
   <header class="hero">
     <div class="hero-text">
-      <h1>Features</h1>
-      <h2>Games</h2>
+      <h1>Amigo Secreto</h1>
+      <h2>Reglas del juego</h2>
       <p>
-        It is a long established fact that a reader will be distracted by
-        the readable content of a page when looking at its layout.
+        El amigo secreto es un juego en el que se van agregando amigos a una lista de amigos. 
+        Luego cada participante ejecuta el juego y se le asigna un amigo al azar. <br> 
+        Cada persona debe hacer un regalo a la persona que le tocó, sin que esta sepa quién es su amigo secreto. 
       </p>
-      <button class="btn-view">View All</button>
+      <br>
+      <button id="btnJugar" class="btn-view">A jugar!</button>
     </div>
 
     <!-- Ejemplo de imágenes circulares (podrías reemplazar las URLs con tus imágenes) -->
     <div class="hero-images">
       <div class="circle-img">
-        <img src="https://via.placeholder.com/150" alt="Imagen 1" />
+        <img id="imagenPrincipal" src="assets/mafia.jpg" alt="Imagen 1" />
       </div>
-      <div class="circle-img">
-        <img src="https://via.placeholder.com/150" alt="Imagen 2" />
-      </div>
-      <div class="circle-img">
-        <img src="https://via.placeholder.com/150" alt="Imagen 3" />
-      </div>
+      <div id="nombreGanador" class="nombre-ganador"></div>
     </div>
   </header>
 
@@ -37,24 +34,30 @@
   <main>
     <section class="add-friend-section">
       <h2>Agrega tus amigos</h2>
-      <input
-        type="text"
-        id="nombreAmigo"
-        placeholder="Ingresa el nombre de tu amigo"
-      />
-      <button id="btnAgregar">Agregar amigo</button>
-      <button id="btnSortear">Sortear amigo</button>
+      <div class="input-group">
+        <input
+          type="text"
+          id="nombreAmigo"
+          placeholder="Ingresa el nombre de tu amigo"
+        />
+        <select id="generoAmigo">
+          <option value="">Selecciona un género</option>
+          <option value="masculino">Masculino</option>
+          <option value="femenino">Femenino</option>
+        </select>
+      </div>
+        <div class="boton-group">
+          <button id="btnAgregar">Agregar amigo</button>
+          <button id="btnSortear">Sortear amigo</button>
+        </div>
     </section>
 
     <!-- Lista de amigos -->
     <section id="listaAmigos" class="friend-list"></section>
 
-    <!-- Resultado del ganador -->
-    <section id="ganador" class="winner"></section>
   </main>
 
   <!-- Script para la lógica del juego -->
-  <script src="app.js" defer>
-  </script>
+  <script src="app.js" defer></script>
 </body>
 </html>

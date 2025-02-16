@@ -5,6 +5,7 @@
     box-sizing: border-box;
   }
   
+  /* Estilos generales */
   body {
     font-family: Arial, sans-serif;
     background-color: #0b0b0b; /* Fondo oscuro */
@@ -21,13 +22,14 @@
     background-color: #000000; /* Un negro más intenso */
   }
   
+  
   .hero-text {
-    max-width: 400px;
+    max-width: 500px;
     margin-bottom: 1rem;
   }
   
-  .hero-text h1 {
-    color: #ed145b; /* Color rojo/rosado para "Features" */
+  .hero-text h1 {  
+    color: #ed145b;
     font-size: 3rem;
     margin-bottom: 0.5rem;
   }
@@ -55,13 +57,14 @@
   
   /* Imágenes circulares */
   .hero-images {
-    display: flex;
+    display: flexbox;
     gap: 1rem;
   }
   
   .circle-img {
-    width: 120px;
-    height: 120px;
+    margin: 20px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     border: 2px solid #ed145b;
     overflow: hidden;
@@ -85,18 +88,42 @@
     max-width: 600px;
   }
   
-  .add-friend-section h2 {
-    color: #ed145b;
+  .input-group {
+    display: flex;
+    align-items: center;
+    width: 70%;
     margin-bottom: 1rem;
   }
   
-  .add-friend-section input {
-    width: 70%;
+  .input-group input {
+    flex: 1;
     padding: 0.5rem;
-    margin-bottom: 1rem;
-    border: 2px solid #ed145b;
-    border-radius: 4px;
+    border: 2px solid #ffffff;
+    border-radius: 4px 0 0 4px;
     font-size: 1rem;
+  }
+  
+  .input-group select {
+    width: 33.3%;
+    padding: 0.5rem;
+    border: 1px solid #ffffff;
+    border-left: none;
+    border-radius: 0 4px 4px 0;
+    font-size: 1rem;
+    background-color: #000000;
+    color: #ffffff;
+    cursor: pointer;
+  }
+  
+  /* .input-group select:hover {
+    background-color: #ed145b;
+    border: 1px solid #ed145b;
+    border-left: none;
+  } */
+  
+  .add-friend-section h2 {
+    color: #ed145b;
+    margin-bottom: 1rem;
   }
   
   .add-friend-section button {
@@ -109,7 +136,21 @@
     margin: 0.5rem;
     font-size: 1rem;
   }
+
+  .add-friend-section button:hover {
+    background-color: #ffffff;
+    color: #000000;
+  }
   
+  .boton-group {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 0.2rem 1.2rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
   /* Lista de amigos */
   .friend-list {
     display: flex;
@@ -117,7 +158,7 @@
     gap: 1rem;
     justify-content: center;
     margin: 2rem auto;
-    max-width: 600px;
+    max-width: 1200px;
   }
   
   .amigo {
@@ -140,23 +181,44 @@
     font-size: 1rem;
     color: #ffffff;
   }
-  
-  /* Ganador */
-  .winner {
+
+  /* Sección de ganador */
+  .nombre-ganador {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem auto;
+    max-width: 600px;
+  }
+  .nombre-ganador h3 {
     text-align: center;
-    margin: 2rem auto;
-  }
-  
-  .winner h3 {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.6rem;
     color: #ed145b;
-    margin-bottom: 1rem;
+  }
+
+  .nombre-ganador p {
+    text-align: center;
+    margin-top: 0.5rem;
+    font-size: 1.5rem;
+    color: #ffffff;
+  }
+
+  .nombre-ganador button {
+    width: 60%;
+    background-color: #000000;
+    color: #ffffff;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border: 1px solid #ffffff;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 1rem;
+    font-size: 1rem;
   }
   
-  .winner img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 1rem;
+  .nombre-ganador button:hover {
+    background-color: #ffffff;
+    color: #000000;
   }
-  
