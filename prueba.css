@@ -1,0 +1,162 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #0b0b0b; /* Fondo oscuro */
+    color: #ffffff;           /* Texto en blanco */
+  }
+  
+  /* Sección principal (hero) */
+  .hero {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    padding: 2rem;
+    background-color: #000000; /* Un negro más intenso */
+  }
+  
+  .hero-text {
+    max-width: 400px;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-text h1 {
+    color: #ed145b; /* Color rojo/rosado para "Features" */
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .hero-text h2 {
+    font-size: 2rem;
+    color: #ffffff; /* "Games" en blanco */
+    margin-bottom: 1rem;
+  }
+  
+  .hero-text p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #cccccc; /* Un gris claro para el texto */
+  }
+  
+  .btn-view {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* Imágenes circulares */
+  .hero-images {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .circle-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 2px solid #ed145b;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .circle-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Sección para agregar amigos */
+  .add-friend-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem auto;
+    max-width: 600px;
+  }
+  
+  .add-friend-section h2 {
+    color: #ed145b;
+    margin-bottom: 1rem;
+  }
+  
+  .add-friend-section input {
+    width: 70%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 2px solid #ed145b;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  .add-friend-section button {
+    background-color: #ed145b;
+    color: #ffffff;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0.5rem;
+    font-size: 1rem;
+  }
+  
+  /* Lista de amigos */
+  .friend-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin: 2rem auto;
+    max-width: 600px;
+  }
+  
+  .amigo {
+    background-color: #1f1f1f;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    width: 120px;
+  }
+  
+  .amigo img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 0.5rem;
+  }
+  
+  .amigo p {
+    font-size: 1rem;
+    color: #ffffff;
+  }
+  
+  /* Ganador */
+  .winner {
+    text-align: center;
+    margin: 2rem auto;
+  }
+  
+  .winner h3 {
+    color: #ed145b;
+    margin-bottom: 1rem;
+  }
+  
+  .winner img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+  }
+  

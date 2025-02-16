@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pequeño Juego de Amigos</title>
+  <!-- Vinculamos el archivo CSS -->
+  <link rel="stylesheet" href="prueba.css" />
+</head>
+<body>
+  <!-- Sección principal de "Features" y "Games" -->
+  <header class="hero">
+    <div class="hero-text">
+      <h1>Features</h1>
+      <h2>Games</h2>
+      <p>
+        It is a long established fact that a reader will be distracted by
+        the readable content of a page when looking at its layout.
+      </p>
+      <button class="btn-view">View All</button>
+    </div>
+
+    <!-- Ejemplo de imágenes circulares (podrías reemplazar las URLs con tus imágenes) -->
+    <div class="hero-images">
+      <div class="circle-img">
+        <img src="https://via.placeholder.com/150" alt="Imagen 1" />
+      </div>
+      <div class="circle-img">
+        <img src="https://via.placeholder.com/150" alt="Imagen 2" />
+      </div>
+      <div class="circle-img">
+        <img src="https://via.placeholder.com/150" alt="Imagen 3" />
+      </div>
+    </div>
+  </header>
+
+  <!-- Sección para agregar amigos y sortear -->
+  <main>
+    <section class="add-friend-section">
+      <h2>Agrega tus amigos</h2>
+      <input
+        type="text"
+        id="nombreAmigo"
+        placeholder="Ingresa el nombre de tu amigo"
+      />
+      <button id="btnAgregar">Agregar amigo</button>
+      <button id="btnSortear">Sortear amigo</button>
+    </section>
+
+    <!-- Lista de amigos -->
+    <section id="listaAmigos" class="friend-list"></section>
+
+    <!-- Resultado del ganador -->
+    <section id="ganador" class="winner"></section>
+  </main>
+
+  <!-- Script para la lógica del juego -->
+  <script src="app.js" defer>
+  </script>
+</body>
+</html>
