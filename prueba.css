@@ -9,26 +9,26 @@
   body {
     font-family: Arial, sans-serif;
     background-color: #0b0b0b; /* Fondo oscuro */
-    color: #ffffff;           /* Texto en blanco */
+    color: #ffffff;           /* Texto blanco */
   }
   
   /* Sección principal (hero) */
-  .hero {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-around;
-    padding: 2rem;
+  .hero {    /* Sección principal */
+    display: flex;   /* Flexbox para centrar elementos */
+    flex-wrap: wrap; /* Para que los elementos se acomoden en varias líneas */
+    align-items: center; /* Centrar verticalmente */
+    justify-content: space-around; /* Espacio entre elementos */
+    padding: 2rem; /* Espacio interno */
     background-color: #000000; /* Un negro más intenso */
   }
   
   
-  .hero-text {
-    max-width: 500px;
-    margin-bottom: 1rem;
+  .hero-text { /* sección texto */
+    max-width: 500px; 
+    margin-bottom: 1rem; 
   }
   
-  .hero-text h1 {  
+  .hero-text h1 { 
     color: #ed145b;
     font-size: 3rem;
     margin-bottom: 0.5rem;
@@ -55,12 +55,13 @@
     cursor: pointer;
   }
   
-  /* Imágenes circulares */
+  /* Imágen circular */
   .hero-images {
     display: flexbox;
     gap: 1rem;
   }
   
+   
   .circle-img {
     margin: 20px;
     width: 200px;
@@ -115,11 +116,6 @@
     cursor: pointer;
   }
   
-  /* .input-group select:hover {
-    background-color: #ed145b;
-    border: 1px solid #ed145b;
-    border-left: none;
-  } */
   
   .add-friend-section h2 {
     color: #ed145b;
@@ -222,3 +218,5 @@
     background-color: #ffffff;
     color: #000000;
   }
+
+
