@@ -2,7 +2,7 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box; /* Para que el padding no afecte el tamaño total */
   }
   
   /* Estilos generales */
@@ -23,7 +23,7 @@
   }
   
   
-  .hero-text { /* sección texto */
+  .hero-text { 
     max-width: 500px; 
     margin-bottom: 1rem; 
   }
@@ -36,14 +36,14 @@
   
   .hero-text h2 {
     font-size: 2rem;
-    color: #ffffff; /* "Games" en blanco */
+    color: #ffffff; 
     margin-bottom: 1rem;
   }
   
   .hero-text p {
     font-size: 1rem;
     line-height: 1.5;
-    color: #cccccc; /* Un gris claro para el texto */
+    color: #cccccc; 
   }
   
   .btn-view {
