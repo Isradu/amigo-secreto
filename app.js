@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() { // Evento que se ejec
     const btnAgregar = document.getElementById('btnAgregar');  // Variable para almacenar el botón "Agregar amigo" en el HTML
     const circleImg = document.querySelector('.circle-img'); // Variable para almacenar el div de la imagen del ganador en el HTML
     const nombreGanador = document.getElementById('nombreGanador'); // Variable para almacenar el div del nombre del ganador en
+    const audioSorteo = document.getElementById('audioSorteo'); // Variable para el audio de celebración
   
     // Array para almacenar todos los amigos agregados por el usuario (nombre e imagen) 
     let amigos = []; 
@@ -26,6 +27,38 @@ document.addEventListener('DOMContentLoaded', function() { // Evento que se ejec
       "assets/sofi.jpg",
       "assets/lexi.jpg"
     ];
+    
+    // Arrays para rastrear las imágenes disponibles de cada género
+    let imagenesMasculinasDisponibles = [...imagenesMasculinas];
+    let imagenesFemeninasDisponibles = [...imagenesFemeninas];
+    
+    // Función para obtener una imagen aleatoria no utilizada del género especificado
+    function obtenerImagenAleatoria(genero) {
+      let imagenesDisponibles = genero === "femenino" ? imagenesFemeninasDisponibles : imagenesMasculinasDisponibles;
+      
+      // Si no quedan imágenes disponibles, reiniciar el array con todas las imágenes originales
+      if (imagenesDisponibles.length === 0) {
+        imagenesDisponibles = genero === "femenino" ? [...imagenesFemeninas] : [...imagenesMasculinas];
+        if (genero === "femenino") {
+          imagenesFemeninasDisponibles = imagenesDisponibles;
+        } else {
+          imagenesMasculinasDisponibles = imagenesDisponibles;
+        }
+      }
+      
+      // Seleccionar una imagen aleatoria de las disponibles
+      const indiceAleatorio = Math.floor(Math.random() * imagenesDisponibles.length);
+      const imagenSeleccionada = imagenesDisponibles[indiceAleatorio];
+      
+      // Eliminar la imagen seleccionada del array de disponibles
+      if (genero === "femenino") {
+        imagenesFemeninasDisponibles.splice(indiceAleatorio, 1);
+      } else {
+        imagenesMasculinasDisponibles.splice(indiceAleatorio, 1);
+      }
+      
+      return imagenSeleccionada;
+    }
   
     // Función para deshabilitar el botón "Agregar amigo" cuando no se selecciona un género o ya se alcanzó el máximo de amigos que podemos agregar
     function deshabilitarBotonAgregar() { 
@@ -54,35 +87,51 @@ document.addEventListener('DOMContentLoaded', function() { // Evento que se ejec
       btnJugar.style.backgroundColor = ''; // Regresamos el color original de fondo del botón
       btnJugar.style.cursor = 'pointer'; // El cursor aparece como manita al pasar sobre el botón
     }
+
+    // Función para agregar un amigo a la lista
+    function agregarAmigo() {
+      const nombre = nombreAmigo.value.trim(); // Obtenemos el valor del input y eliminamos los espacios en blanco
+      const genero = generoAmigo.value; // Obtenemos el valor del género seleccionado
+
+      // Validamos que no esté vacío y que no supere el máximo de amigos
+      if (nombre && amigos.length < 8) { 
+        // Obtener una imagen aleatoria no repetida para el género seleccionado
+        const imagen = obtenerImagenAleatoria(genero);
   
-    // Al hacer clic en "Agregar amigo" vamos a agregar un amigo a la lista de amigos
-    btnAgregar.addEventListener("click", () => {
-      const nombre = nombreAmigo.value.trim(); // Obtenemos el valor del input y eliminamos los espacios en blanco al inicio y al final y los almacenamos en la variable "nombre"
-      const genero = generoAmigo.value; // Obtenemos el valor del select del género del amigo y lo almacenamos en la variable "genero"
-  
-      // primero validamos que no esté vacío y que no supere una cierta cantidad amigos
-      if (nombre && amigos.length < 8) { // Si el nombre no está vacío y la cantidad de amigos es menor a 8
-        let imagen; // creamos una variable para almacenar la URL de la imagen del amigo 
-        if (genero === "femenino") { // Si el usuario eligió que el género es femenino...
-          imagen = imagenesFemeninas[amigos.length % imagenesFemeninas.length]; // De la lista de "imagenesFemeninans", asignamos una imagen a la variable "imagen"
-        } else {  // Si no es femenino, asumimos que es masculino...
-          imagen = imagenesMasculinas[amigos.length % imagenesMasculinas.length]; // Entonces de lo contrario, asignamos una imagen de la lista de "imagenesMasculinas" a la variable "imagen"
-        }
-  
-        const nuevoAmigo = { // Luego creamos un objeto "nuevoAmigo" con las siguientes propiedades... 
-          nombre, // Propiedad nombre
-          imagen // Propiedad imagen
+        const nuevoAmigo = { // Creamos un objeto con el nombre e imagen del amigo 
+          nombre,
+          imagen
         };
   
-        amigos.push(nuevoAmigo); // Agregamos EL objeto "nuevoAmigo" junto con su nombre e imagen a la lista "amigos"
-        mostrarAmigos(); // Llamamos a la función "mostrarAmigos" para mostrar la lista de amigos en el HTML
-        deshabilitarBotonAgregar(); // Deshabilitamos el botón "Agregar amigo" mientras no se seleccione nuevamente un género o si se alcanza el máximo de amigos
-        nombreAmigo.value = ""; // Volvemos a impiarf el input del nombre después de agregar un amigo
+        amigos.push(nuevoAmigo); // Agregamos el amigo a la lista
+        mostrarAmigos(); // Mostramos los amigos en el HTML
+        
+        // Solo deshabilitamos el botón si se alcanzó el máximo de amigos
+        if (amigos.length >= 8) {
+          deshabilitarBotonAgregar();
+        }
+        
+        nombreAmigo.value = ""; // Limpiamos el input del nombre
+        nombreAmigo.focus(); // Ponemos el foco en el input para agregar otro amigo
       } 
-      else { // Pero, si el nombre está vacío o ya alcanzaste el máximo de 8 amigos...
-        alert("El nombre está vacío o ya alcanzaste el máximo de 8 amigos."); // Mostramos el siguiente mensaje de alerta...
+      else { // Si el nombre está vacío o ya alcanzamos el máximo de amigos
+        alert("El nombre está vacío o ya alcanzaste el máximo de 8 amigos.");
+      }
+    }
+    
+    // Evento de tecla "Enter" en el campo de nombre
+    nombreAmigo.addEventListener('keypress', function(event) {
+      if (event.key === 'Enter') {
+        event.preventDefault(); // Prevenir el comportamiento predeterminado
+        // Verificar si el botón de agregar está habilitado
+        if (!btnAgregar.disabled) {
+          agregarAmigo(); // Llamar a la función para agregar un amigo
+        }
       }
     });
+    
+    // Al hacer clic en "Agregar amigo" vamos a agregar un amigo a la lista de amigos
+    btnAgregar.addEventListener("click", agregarAmigo);
   
     // Función para mostrar los amigos en la lista de amigos que se verá reflejada en el HTML
     function mostrarAmigos() {
@@ -108,6 +157,10 @@ document.addEventListener('DOMContentLoaded', function() { // Evento que se ejec
       // Elegimos un índice aleatorio para obtener al amigo ganador 
       const indiceGanador = Math.floor(Math.random() * amigos.length); // Elegimos un índice aleatorio entre 0 y la cantidad de amigos de la lista "amigos"
       const amigoGanador = amigos[indiceGanador]; // Obtenemos al amigo ganador con el índice aleatorio obtenido
+
+      // Reproducir sonido de celebración
+      audioSorteo.currentTime = 0; // Reiniciar el audio si ya se estaba reproduciendo
+      audioSorteo.play().catch(error => console.log("Error al reproducir el audio:", error));
   
       // Cambiar la imagen en el div circle-img
       circleImg.innerHTML = `

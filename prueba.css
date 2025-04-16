@@ -2,127 +2,138 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /* Para que el padding no afecte el tamaño total */
-  }
+    box-sizing: border-box;
+}
   
-  /* Estilos generales */
-  body {
+/* Estilos generales */
+body {
     font-family: Arial, sans-serif;
-    background-color: #0b0b0b; /* Fondo oscuro */
-    color: #ffffff;           /* Texto blanco */
-  }
+    background-color: #0b0b0b;
+    color: #ffffff;
+    overflow-x: hidden; /* Evitar scroll horizontal */
+    width: 100%;
+}
   
-  /* Sección principal (hero) */
-  .hero {    /* Sección principal */
-    display: flex;   /* Flexbox para centrar elementos */
-    flex-wrap: wrap; /* Para que los elementos se acomoden en varias líneas */
-    align-items: center; /* Centrar verticalmente */
-    justify-content: space-around; /* Espacio entre elementos */
-    padding: 2rem; /* Espacio interno */
-    background-color: #000000; /* Un negro más intenso */
-  }
+/* Sección principal (hero) */
+.hero {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    padding: 2rem 1rem; /* Reducir padding horizontal en móviles */
+    background-color: #000000;
+    width: 100%;
+}
   
+.hero-text { 
+    max-width: 600px;
+    width: 100%;
+    padding: 0 1rem;
+    margin-bottom: 1.5rem;
+}
   
-  .hero-text { 
-    max-width: 500px; 
-    margin-bottom: 1rem; 
-  }
-  
-  .hero-text h1 { 
+.hero-text h1 { 
     color: #ed145b;
-    font-size: 3rem;
+    font-size: clamp(2rem, 5vw, 3rem); /* Tamaño de fuente responsivo */
     margin-bottom: 0.5rem;
-  }
+}
   
-  .hero-text h2 {
-    font-size: 2rem;
+.hero-text h2 {
+    font-size: clamp(1.5rem, 4vw, 2rem);
     color: #ffffff; 
     margin-bottom: 1rem;
-  }
+}
   
-  .hero-text p {
-    font-size: 1rem;
+.hero-text p {
+    font-size: clamp(0.9rem, 2vw, 1rem);
     line-height: 1.5;
-    color: #cccccc; 
-  }
+    color: #cccccc;
+}
   
-  .btn-view {
+.btn-view {
     background-color: #ffffff;
     color: #000000;
     padding: 0.8rem 1.5rem;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-  }
+    margin-top: 1rem;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+}
   
-  /* Imágen circular */
-  .hero-images {
-    display: flexbox;
+/* Imagen circular */
+.hero-images {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 1rem;
-  }
-  
+}
    
-  .circle-img {
+.circle-img {
     margin: 20px;
-    width: 200px;
-    height: 200px;
+    width: clamp(150px, 40vw, 200px); /* Tamaño responsivo */
+    height: clamp(150px, 40vw, 200px);
     border-radius: 50%;
     border: 2px solid #ed145b;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-  }
+}
   
-  .circle-img img {
+.circle-img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
+}
   
-  /* Sección para agregar amigos */
-  .add-friend-section {
+/* Sección para agregar amigos */
+.add-friend-section {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 2rem auto;
+    padding: 0 1rem;
     max-width: 600px;
-  }
+    width: 100%;
+}
   
-  .input-group {
+.input-group {
     display: flex;
+    flex-direction: row; /* Por defecto en fila */
     align-items: center;
-    width: 70%;
+    width: 100%;
     margin-bottom: 1rem;
-  }
+}
   
-  .input-group input {
+.input-group input {
     flex: 1;
     padding: 0.5rem;
     border: 2px solid #ffffff;
     border-radius: 4px 0 0 4px;
-    font-size: 1rem;
-  }
+    font-size: clamp(0.9rem, 2vw, 1rem);
+}
   
-  .input-group select {
+.input-group select {
     width: 33.3%;
     padding: 0.5rem;
     border: 1px solid #ffffff;
     border-left: none;
     border-radius: 0 4px 4px 0;
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 2vw, 1rem);
     background-color: #000000;
     color: #ffffff;
     cursor: pointer;
-  }
+}
   
-  
-  .add-friend-section h2 {
+.add-friend-section h2 {
     color: #ed145b;
     margin-bottom: 1rem;
-  }
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    text-align: center;
+}
   
-  .add-friend-section button {
+.add-friend-section button {
     background-color: #ed145b;
     color: #ffffff;
     padding: 0.6rem 1.2rem;
@@ -130,93 +141,153 @@
     border-radius: 4px;
     cursor: pointer;
     margin: 0.5rem;
-    font-size: 1rem;
-  }
+    font-size: clamp(0.9rem, 2vw, 1rem);
+}
 
-  .add-friend-section button:hover {
+.add-friend-section button:hover {
     background-color: #ffffff;
     color: #000000;
-  }
+}
   
-  .boton-group {
-    background-color: #000000;
+.boton-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: transparent;
     color: #ffffff;
-    padding: 0.2rem 1.2rem;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 1rem;
-  }
-  /* Lista de amigos */
-  .friend-list {
+    width: 100%;
+}
+
+/* Lista de amigos */
+.friend-list {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
     justify-content: center;
     margin: 2rem auto;
     max-width: 1200px;
-  }
+    padding: 0 1rem;
+}
   
-  .amigo {
+.amigo {
     background-color: #1f1f1f;
     border-radius: 8px;
     padding: 1rem;
     text-align: center;
     width: 120px;
-  }
+    transition: transform 0.3s ease;
+}
+
+.amigo:hover {
+    transform: translateY(-5px);
+}
   
-  .amigo img {
+.amigo img {
     width: 80px;
     height: 80px;
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 0.5rem;
-  }
+}
   
-  .amigo p {
-    font-size: 1rem;
+.amigo p {
+    font-size: clamp(0.8rem, 2vw, 1rem);
     color: #ffffff;
-  }
+    word-break: break-word; /* Evitar que textos largos rompan el diseño */
+}
 
-  /* Sección de ganador */
-  .nombre-ganador {
+/* Sección de ganador */
+.nombre-ganador {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 1rem auto;
     max-width: 600px;
-  }
-  .nombre-ganador h3 {
+    width: 100%;
+    padding: 0 1rem;
+}
+
+.nombre-ganador h3 {
     text-align: center;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
-    font-size: 1.6rem;
+    font-size: clamp(1.3rem, 3vw, 1.6rem);
     color: #ed145b;
-  }
+}
 
-  .nombre-ganador p {
+.nombre-ganador p {
     text-align: center;
     margin-top: 0.5rem;
-    font-size: 1.5rem;
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
     color: #ffffff;
-  }
+}
 
-  .nombre-ganador button {
-    width: 60%;
+.nombre-ganador button {
+    width: clamp(150px, 60%, 300px);
     background-color: #000000;
     color: #ffffff;
     padding: 0.6rem 1.2rem;
-    border: none;
     border: 1px solid #ffffff;
     border-radius: 4px;
     cursor: pointer;
     margin: 1rem;
-    font-size: 1rem;
-  }
+    font-size: clamp(0.9rem, 2vw, 1rem);
+}
   
-  .nombre-ganador button:hover {
+.nombre-ganador button:hover {
     background-color: #ffffff;
     color: #000000;
-  }
+}
+
+/* Media queries para diferentes tamaños de pantalla */
+@media (max-width: 768px) {
+    .hero {
+        padding: 1.5rem 1rem;
+    }
+    
+    .hero-text, .hero-images {
+        width: 100%;
+    }
+    
+    .boton-group {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .boton-group button {
+        width: 80%;
+        margin: 0.5rem 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .input-group {
+        flex-direction: column;
+    }
+    
+    .input-group input, .input-group select {
+        width: 80%;
+        border-radius: 4px;
+        border: 2px solid #ffffff;
+        margin-bottom: 0.5rem;
+    }
+    
+    .input-group select {
+        border-left: 2px solid #ffffff;
+    }
+    
+    .circle-img {
+        margin: 10px;
+    }
+    
+    .amigo {
+        width: calc(50% - 1rem);
+        min-width: 100px;
+    }
+}
 
 
